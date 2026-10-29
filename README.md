@@ -50,19 +50,22 @@ array — one object per deal, newest first. This is a real record from
 
 The aggregate repository
 [`prop-firm-discount-codes`](https://github.com/propfirmdiscounts/prop-firm-discount-codes)
-holds the other shape: one object per firm, not per deal.
+holds the other shape: one object per firm, not per deal. A real row, with the
+firm's self-description shortened:
 
 ```json
 {
-  "prop_firm": "Alpha Futures",
-  "code": "Tran009503",
-  "discount": "15%",
+  "prop_firm": "Atlas Funded",
+  "code": "PFD",
+  "discount": "50%",
   "validity": "standing",
-  "last_deal_published": "2026-10-28",
-  "activation_link": "https://propfirmdiscount.com/go/...",
-  "archive_url": "https://propfirmdiscount.com/prop-firm/alpha-futures/",
-  "trustpilot_score": 4.5,
-  "trustpilot_reviews": 1200
+  "last_deal_published": "2026-10-26",
+  "activation_link": "https://propfirmdiscount.com/go/atlasfunded",
+  "archive_url": "https://propfirmdiscount.com/prop-firm/atlas-funded/",
+  "trustpilot_score": 3.9,
+  "trustpilot_reviews": 2064,
+  "description": "At Atlas Funded, we provide a platform where skilled, disciplined traders can transform talent into long-term opportunity. …",
+  "logo": "https://propfirmdiscount.com/wp-content/uploads/2026/10/atlas-funded-logo.jpg"
 }
 ```
 
