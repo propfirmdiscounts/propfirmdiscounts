@@ -42,8 +42,12 @@ array — one object per deal, newest first. This is a real record from
 ```
 
 - `date_published` — when the deal went live on the site.
-- `date_exp` — when the offer ends. `"Ended"` means it already has; a plain
-  date means that date; a date with a time is a precise deadline.
+- `date_exp` — when the offer ends, in one of five forms:
+  - `"Limited time"` — the firm gave no end date; the offer is running now.
+  - `"2026-11-01"` — ends on that date.
+  - `"2026-11-01 17:00"` — ends at that exact time.
+  - `"2026-10-25 (ended)"` — had an end date and has passed it.
+  - `"Ended"` — had no stated end date and is no longer running.
 - `code` — present only for firms that use one code across every offer. When
   a firm runs a separate campaign code per deal, the field is absent and the
   code is shown on `post_url` instead.
