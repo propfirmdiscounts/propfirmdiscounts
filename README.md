@@ -18,23 +18,52 @@ scraping a live site.
 
 ## What the data looks like
 
-A flat JSON array — one object per firm — so dataset viewers read each firm as
-a row:
+The per-firm repositories hold one firm's complete deal history as a flat JSON
+array — one object per deal, newest first. This is a real record from
+[`phidias-propfirm-deals`](https://github.com/propfirmdiscounts/phidias-propfirm-deals):
 
 ```json
-[
-  {
-    "prop_firm": "Alpha Futures",
-    "code": "Tran009503",
-    "discount": "15%",
-    "validity": "standing",
-    "last_deal_published": "2026-10-28",
-    "activation_link": "https://propfirmdiscount.com/go/...",
-    "archive_url": "https://propfirmdiscount.com/prop-firm/alpha-futures/",
-    "trustpilot_score": 4.5,
-    "trustpilot_reviews": 1200
-  }
-]
+{
+  "deal_id": 13021,
+  "title": "90% off first-month challenge entry for Halloween",
+  "offer_type": "coupon",
+  "discount_value": "90%",
+  "scope": [
+    "Fundamental Evaluations, Premium Evaluations, Express To Live Monthly Evaluations, One-Time Payment Accounts, 50K, 100K, 150K"
+  ],
+  "date_published": "2026-10-25",
+  "date_exp": "2026-11-01 17:00",
+  "last_verified": "2026-10-25",
+  "post_url": "https://propfirmdiscount.com/deals/phidias-propfirm/phidias-propfirm-halloween-90-off-first-month-evaluations/",
+  "prop_firm": "Phidias Propfirm",
+  "prop_firm_slug": "phidias-propfirm",
+  "code": "PFD"
+}
+```
+
+- `date_published` — when the deal went live on the site.
+- `date_exp` — when the offer ends. `"Ended"` means it already has; a plain
+  date means that date; a date with a time is a precise deadline.
+- `code` — present only for firms that use one code across every offer. When
+  a firm runs a separate campaign code per deal, the field is absent and the
+  code is shown on `post_url` instead.
+
+The aggregate repository
+[`prop-firm-discount-codes`](https://github.com/propfirmdiscounts/prop-firm-discount-codes)
+holds the other shape: one object per firm, not per deal.
+
+```json
+{
+  "prop_firm": "Alpha Futures",
+  "code": "Tran009503",
+  "discount": "15%",
+  "validity": "standing",
+  "last_deal_published": "2026-10-28",
+  "activation_link": "https://propfirmdiscount.com/go/...",
+  "archive_url": "https://propfirmdiscount.com/prop-firm/alpha-futures/",
+  "trustpilot_score": 4.5,
+  "trustpilot_reviews": 1200
+}
 ```
 
 `validity: "standing"` means the code has no expiry date — it is not a
